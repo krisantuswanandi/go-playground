@@ -1,9 +1,9 @@
 package main
 
 import (
-	"playground/tea"
+	"playground/cli"
 )
 
 func main() {
-	tea.TryTea()
+	cli.RunCli()
 }
