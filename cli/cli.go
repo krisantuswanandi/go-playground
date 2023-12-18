@@ -9,15 +9,17 @@ import (
 )
 
 func RunCli() {
+	cli.VersionFlag = &cli.BoolFlag{
+		Name:    "Version",
+		Aliases: []string{"v"},
+		Usage:   "print version",
+	}
+
 	app := &cli.App{
-		Name:  "boom",
-		Usage: "make an explosive entrance",
+		Name:    "boom",
+		Usage:   "make an explosive entrance",
+		Version: "v0.0.1",
 		Flags: []cli.Flag{
-			&cli.BoolFlag{
-				Name:    "version",
-				Usage:   "show version",
-				Aliases: []string{"v"},
-			},
 			&cli.StringFlag{
 				Name:    "lang",
 				Value:   "english",
@@ -47,11 +49,6 @@ func RunCli() {
 			},
 		},
 		Action: func(ctx *cli.Context) error {
-			if ctx.Bool("version") {
-				fmt.Println("Version: 0.0.1")
-				return nil
-			}
-
 			fmt.Println("Welcome to the app!")
 			return nil
 		},
