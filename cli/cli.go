@@ -31,17 +31,28 @@ func RunCli() {
 				},
 			},
 		},
-		Action: func(cCtx *cli.Context) error {
-			if cCtx.Bool("version") {
+		Commands: []*cli.Command{
+			{
+				Name:    "greet",
+				Aliases: []string{"g"},
+				Usage:   "Say hello to the provided `name`",
+				Action: func(ctx *cli.Context) error {
+					if ctx.String("lang") == "indonesia" {
+						fmt.Println("Halo,", ctx.Args().First()+"!")
+					} else {
+						fmt.Println("Hello,", ctx.Args().First()+"!")
+					}
+					return nil
+				},
+			},
+		},
+		Action: func(ctx *cli.Context) error {
+			if ctx.Bool("version") {
 				fmt.Println("Version: 0.0.1")
 				return nil
 			}
 
-			if cCtx.String("lang") == "indonesia" {
-				fmt.Println("Halo Dunia!")
-			} else {
-				fmt.Println("Hello World!")
-			}
+			fmt.Println("Welcome to the app!")
 			return nil
 		},
 	}
