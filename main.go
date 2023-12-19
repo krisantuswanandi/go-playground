@@ -1,9 +1,9 @@
 package main
 
 import (
-	"playground/cli"
+	"playground/viper"
 )
 
 func main() {
-	cli.RunCli()
+	viper.Run()
 }
