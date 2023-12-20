@@ -1,9 +1,9 @@
 package main
 
 import (
-	"playground/viper"
+	"playground/tview"
 )
 
 func main() {
-	viper.Run()
+	tview.Run()
 }
